@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+
+{% block page_main_title %}Courses{% endblock page_main_title %}
+
+{% block content %}
+    {% for course in courses %}
+    <div class="course">
+        <h2>{{ course.title }}</h2>
+        {{ course.description|safe }}
+        <div class="course-dates">
+            <ul>
+            {% for event in course.schedule %}
+            <li>
+            <strong>{{ event.time }}</strong> - {{ event.location }}
+            </li>    
+            {% endfor %}
+            </ul>
+        </div>
+    </div>
+    {% endfor %}
+{% endblock content %}
+
